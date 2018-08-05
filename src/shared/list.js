@@ -1,8 +1,6 @@
 import React from 'react';
-import { Dimensions } from 'react-native';
 import { List } from 'react-native-elements';
-
-const SCREEN_WIDTH = Dimensions.get('window').width;
+import { SCREEN_WIDTH } from './variables';
 
 export default ListOfItems = ({ data, renderListItem }) =>
   <List containerStyle={{ width: SCREEN_WIDTH * 0.9, alignSelf: 'center' }}>

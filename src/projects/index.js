@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { ScrollView, ActivityIndicator, View, Dimensions } from 'react-native';
+import { ScrollView, ActivityIndicator, View } from 'react-native';
 import { ListItem, Header } from 'react-native-elements';
 import SvgUri from 'react-native-svg-uri';
 import axios from 'axios';
 import { JIRA_USERNAME, JIRA_PASSWORD, NONA_URL } from 'react-native-dotenv';
 
 import ProjectsList from '../shared/list';
+import { SCREEN_WIDTH } from '../shared/variables';
 
 class Projects extends Component {
   constructor(props) {
@@ -66,7 +67,7 @@ class Projects extends Component {
     const { loading, projects } = this.state;
 
     return (
-      <View style={{width: Dimensions.get('window').width, flex: 1}}>
+      <View style={{width: SCREEN_WIDTH, flex: 1}}>
         <Header
           centerComponent={{ text: 'PROJECTS', style: { color: '#fff' } }}
         />
