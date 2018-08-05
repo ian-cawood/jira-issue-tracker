@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import ProjectsList from './src/projectsList';
+import Projects from './src/projects';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <ProjectsList />
+        <Projects />
       </View>
     );
   }
