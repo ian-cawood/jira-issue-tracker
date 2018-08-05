@@ -28,8 +28,6 @@ class ProjectsList extends Component {
   }
 
   render() {
-    console.log(this.state.projects);
-    console.log(this.state.projects.length > 0 && this.state.projects[0].projectCategory.name)
     return (
       <ScrollView>
         <List containerStyle={{ width: SCREEN_WIDTH * 0.9 }}>
