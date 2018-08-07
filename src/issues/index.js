@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { ScrollView, ActivityIndicator, View, Dimensions } from 'react-native';
-import { ListItem, Header } from 'react-native-elements';
-import SvgUri from 'react-native-svg-uri';
+import { ScrollView, ActivityIndicator, View, Text } from 'react-native';
+import { Header } from 'react-native-elements';
 import axios from 'axios';
 import { JIRA_USERNAME, JIRA_PASSWORD, NONA_URL } from 'react-native-dotenv';
 
@@ -11,6 +10,8 @@ import { SCREEN_WIDTH } from '../shared/variables';
 class Issues extends Component {
   constructor(props) {
     super(props);
+
+    this.project = this.props.navigation.getParam('project');
 
     this.state = {
       loading: true,
@@ -23,7 +24,7 @@ class Issues extends Component {
   componentDidMount() {
     axios({
       method: 'get',
-      url: `${NONA_URL}/search?jql=assignee=currentuser()+AND+project=${this.props.project.key}`,
+      url: `${NONA_URL}/search?jql=assignee=currentuser()+AND+project=${this.project.key}`,
       auth: {
         username: JIRA_USERNAME,
         password: JIRA_PASSWORD
@@ -32,8 +33,13 @@ class Issues extends Component {
   }
 
   renderIssueCard(issue) {
+    console.log(issue);
     return (
-      <Text>{issue.name}</Text>
+      <Text
+        key={issue.id}
+      >
+        {issue.fields.summary}
+      </Text>
     );
   }
 

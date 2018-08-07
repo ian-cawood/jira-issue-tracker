@@ -18,7 +18,7 @@ class Projects extends Component {
     };
 
     this.renderListItem = this.renderListItem.bind(this);
-    this.getIssuesForProject = this.getIssuesForProject.bind(this);
+    this.selectProject = this.selectProject.bind(this);
   };
 
   componentDidMount() {
@@ -32,16 +32,10 @@ class Projects extends Component {
     }).then(result => this.setState({ projects: result.data, loading: false }));
   }
 
-  getIssuesForProject(selectedProject) {
-    console.log("function called");
-    axios({
-      method: 'get',
-      url: `${NONA_URL}/search?jql=assignee=currentuser()+AND+project=${selectedProject.key}`,
-      auth: {
-        username: JIRA_USERNAME,
-        password: JIRA_PASSWORD
-      }
-    }).then(result => console.log(result.data.issues.length)).catch(error => console.log(error));
+  selectProject(project) {
+    this.props.navigation.navigate('Issues',{
+      project
+    });
   }
 
   renderListItem(project) {
@@ -58,7 +52,7 @@ class Projects extends Component {
         key={project.id}
         title={project.name}
         subtitle={project.projectCategory ? project.projectCategory.name : project.key}
-        onPress={() => this.getIssuesForProject(project)}
+        onPress={() => this.selectProject(project)}
       />
     );
   }
