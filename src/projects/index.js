@@ -33,7 +33,7 @@ class Projects extends Component {
   }
 
   selectProject(project) {
-    this.props.navigation.navigate('Issues',{
+    this.props.navigation.navigate('Stories',{
       project
     });
   }
