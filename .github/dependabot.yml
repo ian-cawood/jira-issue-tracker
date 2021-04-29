@@ -1,0 +1,20 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "03:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: expo
+    versions:
+    - 40.0.1
+    - 41.0.0
+  - dependency-name: react-native-dotenv
+    versions:
+    - 2.5.1
+    - 2.5.3
+  - dependency-name: react-navigation
+    versions:
+    - 4.4.3
